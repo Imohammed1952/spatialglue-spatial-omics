@@ -1,0 +1,33 @@
+Baseline experiment: A1 lymph node
+
+RNA file: GSM8195494_A1_LN.h5ad
+Protein file: GSM8195498_A1_LN_Protein.h5ad
+
+Input features:
+- RNA: obsm["feat"], shape (3484, 30)
+- Protein: obsm["feat"], shape (3484, 30)
+- Spatial coordinates: obsm["spatial"]
+
+Graphs:
+- Spatial kNN: k = 3
+- Feature kNN: k = 20
+
+Model:
+- in_dim = 30
+- hidden_dim = 64
+- latent_dim = 32
+- num_modalities = 2
+- dropout = 0.1
+
+Training:
+- epochs = 500
+- lr = 1e-4
+- lambda_corr = 1.0
+- device = cpu
+
+Clustering:
+- KMeans, n_clusters = 10
+
+The baseline model trained successfully on A1 lymph node.
+The latent embedding produced spatially coherent clusters, though some regions were noisy.
+This serves as the baseline SpatialGLUE-inspired model before adding cross-sample integration and batch correction.
